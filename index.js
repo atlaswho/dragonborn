@@ -7,11 +7,10 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
 var banifbeg = process.env.BAN_IF_BEG == "true";
 
 client.on("messageCreate", async (message) => {
-  if (message?.content == process.env.ROLE_TRIGGER) {
+  if (new RegExp(process.env.ROLE_TRIGGER, 'i').test(message?.content)) {
     await message.guild.members.cache
       .find((member) => member.user.id == message.author.id)
       .roles.add(
@@ -25,7 +24,7 @@ client.on("messageCreate", async (message) => {
         (member) => member.user.id == message.author.id
       );
       const role = message.guild.roles.cache.find(
-        (role) => role.name == "calus emissary"
+        (role) => role.name == "Dungeon Master"
       );
       await member.roles.add(role);
     } else {
