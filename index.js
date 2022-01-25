@@ -10,12 +10,23 @@ client.on("ready", () => {
 var banifbeg = process.env.BAN_IF_BEG == "true";
 
 client.on("messageCreate", async (message) => {
-  if (new RegExp(process.env.ROLE_TRIGGER, 'i').test(message?.content)) {
-    await message.guild.members.cache
-      .find((member) => member.user.id == message.author.id)
-      .roles.add(
-        message.guild.roles.cache.find((role) => role.name == process.env.ROLE)
-      );
+  try {
+    await message.delete();
+  } catch (error) {
+    console.log(error);
+  }
+  if (new RegExp(process.env.ROLE_TRIGGER, "i").test(message?.content)) {
+    try {
+      await message.guild.members.cache
+        .find((member) => member.user.id == message.author.id)
+        .roles.add(
+          message.guild.roles.cache.find(
+            (role) => role.name == process.env.ROLE
+          )
+        );
+    } catch (error) {
+      console.log(error);
+    }
   } else if (banifbeg && /can i be a mod/i.test(message?.content)) {
     const coinflipresult = getRandomInt(1);
     if (coinflipresult) {
