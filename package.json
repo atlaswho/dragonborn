@@ -1,0 +1,16 @@
+{
+  "name": "dragonborn",
+  "version": "1.0.0",
+  "description": "discord bot so people dont be dumb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tythegamerguy77@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^14.3.0"
+  }
+}
