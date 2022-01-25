@@ -7,6 +7,7 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+
 var banifbeg = process.env.BAN_IF_BEG == "true";
 
 client.on("messageCreate", async (message) => {
