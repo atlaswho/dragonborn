@@ -28,7 +28,7 @@ client.on("messageCreate", async (message) => {
       
       await roles.add(
         message.guild.roles.cache.find(
-          (role) => role.name == 'gunter'
+          (role) => role.name == 'Gunter'
         )
       );
     } catch (error) {
