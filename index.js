@@ -17,13 +17,20 @@ client.on("messageCreate", async (message) => {
   }
   if (new RegExp(process.env.ROLE_TRIGGER, "i").test(message?.content)) {
     try {
-      await message.guild.members.cache
-        .find((member) => member.user.id == message.author.id)
-        .roles.add(
-          message.guild.roles.cache.find(
-            (role) => role.name == process.env.ROLE
-          )
-        );
+      const { roles } = await message.guild.members.cache
+        .find((member) => member.user.id == message.author.id);
+      
+      await roles.add(
+        message.guild.roles.cache.find(
+          (role) => role.name == process.env.ROLE
+        )
+      );
+      
+      await roles.add(
+        message.guild.roles.cache.find(
+          (role) => role.name == 'Gunter'
+        )
+      );
     } catch (error) {
       console.log(error);
     }
